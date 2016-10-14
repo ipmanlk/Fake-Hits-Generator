@@ -1,0 +1,7 @@
+C:\Users\IP-Man\Documents\SharpDevelop Projects\Fake Hits Generator\Fake Hits Generator\bin\Debug\Fake Hits Generator.exe
+C:\Users\IP-Man\Documents\SharpDevelop Projects\Fake Hits Generator\Fake Hits Generator\bin\Debug\Fake Hits Generator.pdb
+C:\Users\IP-Man\Documents\SharpDevelop Projects\Fake Hits Generator\Fake Hits Generator\obj\Debug\Fake Hits Generator.vbprojResolveAssemblyReference.cache
+C:\Users\IP-Man\Documents\SharpDevelop Projects\Fake Hits Generator\Fake Hits Generator\obj\Debug\Fake_Hits_Generator.MainForm.resources
+C:\Users\IP-Man\Documents\SharpDevelop Projects\Fake Hits Generator\Fake Hits Generator\obj\Debug\Fake Hits Generator.vbproj.GenerateResource.Cache
+C:\Users\IP-Man\Documents\SharpDevelop Projects\Fake Hits Generator\Fake Hits Generator\obj\Debug\Fake Hits Generator.exe
+C:\Users\IP-Man\Documents\SharpDevelop Projects\Fake Hits Generator\Fake Hits Generator\obj\Debug\Fake Hits Generator.pdb
