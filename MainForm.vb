@@ -20,6 +20,10 @@ Public Partial Class MainForm
 	
 	Sub Load_site_btnClick(sender As Object, e As EventArgs)	
 		
+		proxy_box.Text = proxy_box.Text.Trim
+		url_box.Text = url_box.Text.Trim
+		hit_speed_val_box.Text = hit_speed_val_box.Text.Trim 
+		
 		If String.IsNullOrEmpty(url_box.Text) Or String.IsNullOrEmpty(hit_speed_val_box.Text) Then 
 			MsgBox("Input details are missing!",vbExclamation,"Error")
 			
