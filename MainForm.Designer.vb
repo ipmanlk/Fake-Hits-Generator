@@ -48,10 +48,14 @@ Partial Class MainForm
 		Me.web_browser_grp = New System.Windows.Forms.GroupBox()
 		Me.webBrowser = New System.Windows.Forms.WebBrowser()
 		Me.hit_timer = New System.Windows.Forms.Timer(Me.components)
+		Me.statusStrip1 = New System.Windows.Forms.StatusStrip()
+		Me.hit_count = New System.Windows.Forms.ToolStripStatusLabel()
+		Me.hit_cntdown = New System.Windows.Forms.ToolStripStatusLabel()
 		Me.main_control_grp.SuspendLayout
 		Me.proxy_grp.SuspendLayout
 		Me.hitspeed_grp.SuspendLayout
 		Me.web_browser_grp.SuspendLayout
+		Me.statusStrip1.SuspendLayout
 		Me.SuspendLayout
 		'
 		'main_control_grp
@@ -71,6 +75,7 @@ Partial Class MainForm
 		'
 		'stop_btn
 		'
+		Me.stop_btn.Enabled = false
 		Me.stop_btn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.stop_btn.ForeColor = System.Drawing.Color.Red
 		Me.stop_btn.Location = New System.Drawing.Point(358, 80)
@@ -79,9 +84,11 @@ Partial Class MainForm
 		Me.stop_btn.TabIndex = 4
 		Me.stop_btn.Text = "Stop"
 		Me.stop_btn.UseVisualStyleBackColor = true
+		AddHandler Me.stop_btn.Click, AddressOf Me.Stop_btnClick
 		'
 		'start_btn
 		'
+		Me.start_btn.Enabled = false
 		Me.start_btn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.start_btn.ForeColor = System.Drawing.Color.Blue
 		Me.start_btn.Location = New System.Drawing.Point(275, 80)
@@ -90,6 +97,7 @@ Partial Class MainForm
 		Me.start_btn.TabIndex = 3
 		Me.start_btn.Text = "Start"
 		Me.start_btn.UseVisualStyleBackColor = true
+		AddHandler Me.start_btn.Click, AddressOf Me.Start_btnClick
 		'
 		'load_site_btn
 		'
@@ -100,6 +108,7 @@ Partial Class MainForm
 		Me.load_site_btn.TabIndex = 2
 		Me.load_site_btn.Text = "Load Website"
 		Me.load_site_btn.UseVisualStyleBackColor = true
+		AddHandler Me.load_site_btn.Click, AddressOf Me.Load_site_btnClick
 		'
 		'url_box
 		'
@@ -108,6 +117,7 @@ Partial Class MainForm
 		Me.url_box.Name = "url_box"
 		Me.url_box.Size = New System.Drawing.Size(380, 26)
 		Me.url_box.TabIndex = 0
+		AddHandler Me.url_box.TextChanged, AddressOf Me.Url_boxTextChanged
 		'
 		'label1
 		'
@@ -145,7 +155,7 @@ Partial Class MainForm
 		Me.proxy_box.Name = "proxy_box"
 		Me.proxy_box.Size = New System.Drawing.Size(245, 20)
 		Me.proxy_box.TabIndex = 0
-		Me.proxy_box.Text = "121.183.4.54:51325 "
+		Me.proxy_box.Text = "null"
 		'
 		'hitspeed_grp
 		'
@@ -194,14 +204,42 @@ Partial Class MainForm
 		Me.webBrowser.Location = New System.Drawing.Point(3, 16)
 		Me.webBrowser.MinimumSize = New System.Drawing.Size(20, 20)
 		Me.webBrowser.Name = "webBrowser"
+		Me.webBrowser.ScriptErrorsSuppressed = true
 		Me.webBrowser.Size = New System.Drawing.Size(439, 104)
 		Me.webBrowser.TabIndex = 0
+		'
+		'hit_timer
+		'
+		AddHandler Me.hit_timer.Tick, AddressOf Me.Hit_timerTick
+		'
+		'statusStrip1
+		'
+		Me.statusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.hit_count, Me.hit_cntdown})
+		Me.statusStrip1.Location = New System.Drawing.Point(0, 371)
+		Me.statusStrip1.Name = "statusStrip1"
+		Me.statusStrip1.Size = New System.Drawing.Size(469, 22)
+		Me.statusStrip1.TabIndex = 6
+		Me.statusStrip1.Text = "statusStrip1"
+		'
+		'hit_count
+		'
+		Me.hit_count.Font = New System.Drawing.Font("Segoe UI", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.hit_count.ForeColor = System.Drawing.Color.Purple
+		Me.hit_count.Name = "hit_count"
+		Me.hit_count.Size = New System.Drawing.Size(0, 17)
+		'
+		'hit_cntdown
+		'
+		Me.hit_cntdown.Font = New System.Drawing.Font("Segoe UI", 9!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.hit_cntdown.Name = "hit_cntdown"
+		Me.hit_cntdown.Size = New System.Drawing.Size(0, 17)
 		'
 		'MainForm
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-		Me.ClientSize = New System.Drawing.Size(469, 375)
+		Me.ClientSize = New System.Drawing.Size(469, 393)
+		Me.Controls.Add(Me.statusStrip1)
 		Me.Controls.Add(Me.web_browser_grp)
 		Me.Controls.Add(Me.hitspeed_grp)
 		Me.Controls.Add(Me.proxy_grp)
@@ -209,7 +247,7 @@ Partial Class MainForm
 		Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
 		Me.Name = "MainForm"
 		Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-		Me.Text = "Fake Hits Generator"
+		Me.Text = "Fake Hits Generator 0.4 Classic"
 		Me.main_control_grp.ResumeLayout(false)
 		Me.main_control_grp.PerformLayout
 		Me.proxy_grp.ResumeLayout(false)
@@ -217,8 +255,14 @@ Partial Class MainForm
 		Me.hitspeed_grp.ResumeLayout(false)
 		Me.hitspeed_grp.PerformLayout
 		Me.web_browser_grp.ResumeLayout(false)
+		Me.statusStrip1.ResumeLayout(false)
+		Me.statusStrip1.PerformLayout
 		Me.ResumeLayout(false)
+		Me.PerformLayout
 	End Sub
+	Private hit_cntdown As System.Windows.Forms.ToolStripStatusLabel
+	Private hit_count As System.Windows.Forms.ToolStripStatusLabel
+	Private statusStrip1 As System.Windows.Forms.StatusStrip
 	Private hit_timer As System.Windows.Forms.Timer
 	Private web_browser_grp As System.Windows.Forms.GroupBox
 	Friend webBrowser As System.Windows.Forms.WebBrowser

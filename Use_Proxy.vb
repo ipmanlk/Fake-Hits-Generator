@@ -17,7 +17,7 @@ Public Class Use_Proxy
         Public proxyBypass As IntPtr
     End Structure
 
-    Public Sub UseProxy(ByVal strProxy As String)
+    Public Shared Sub UseProxy(ByVal strProxy As String)
         Const INTERNET_OPTION_PROXY As Integer = 38
         Const INTERNET_OPEN_TYPE_PROXY As Integer = 3
 
