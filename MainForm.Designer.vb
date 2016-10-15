@@ -31,21 +31,23 @@ Partial Class MainForm
 	''' not be able to load this method if it was changed manually.
 	''' </summary>
 	Private Sub InitializeComponent()
+		Me.components = New System.ComponentModel.Container()
 		Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
 		Me.main_control_grp = New System.Windows.Forms.GroupBox()
+		Me.stop_btn = New System.Windows.Forms.Button()
+		Me.start_btn = New System.Windows.Forms.Button()
+		Me.load_site_btn = New System.Windows.Forms.Button()
 		Me.url_box = New System.Windows.Forms.TextBox()
 		Me.label1 = New System.Windows.Forms.Label()
-		Me.load_site_btn = New System.Windows.Forms.Button()
-		Me.start_btn = New System.Windows.Forms.Button()
-		Me.stop_btn = New System.Windows.Forms.Button()
 		Me.proxy_grp = New System.Windows.Forms.GroupBox()
-		Me.proxy_box = New System.Windows.Forms.TextBox()
 		Me.proxy_help = New System.Windows.Forms.Label()
+		Me.proxy_box = New System.Windows.Forms.TextBox()
 		Me.hitspeed_grp = New System.Windows.Forms.GroupBox()
-		Me.hit_speed_val_box = New System.Windows.Forms.TextBox()
 		Me.hit_speed_help = New System.Windows.Forms.Label()
+		Me.hit_speed_val_box = New System.Windows.Forms.TextBox()
 		Me.web_browser_grp = New System.Windows.Forms.GroupBox()
 		Me.webBrowser = New System.Windows.Forms.WebBrowser()
+		Me.hit_timer = New System.Windows.Forms.Timer(Me.components)
 		Me.main_control_grp.SuspendLayout
 		Me.proxy_grp.SuspendLayout
 		Me.hitspeed_grp.SuspendLayout
@@ -67,6 +69,38 @@ Partial Class MainForm
 		Me.main_control_grp.TabStop = false
 		Me.main_control_grp.Text = "Main Controls"
 		'
+		'stop_btn
+		'
+		Me.stop_btn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.stop_btn.ForeColor = System.Drawing.Color.Red
+		Me.stop_btn.Location = New System.Drawing.Point(358, 80)
+		Me.stop_btn.Name = "stop_btn"
+		Me.stop_btn.Size = New System.Drawing.Size(75, 23)
+		Me.stop_btn.TabIndex = 4
+		Me.stop_btn.Text = "Stop"
+		Me.stop_btn.UseVisualStyleBackColor = true
+		'
+		'start_btn
+		'
+		Me.start_btn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.start_btn.ForeColor = System.Drawing.Color.Blue
+		Me.start_btn.Location = New System.Drawing.Point(275, 80)
+		Me.start_btn.Name = "start_btn"
+		Me.start_btn.Size = New System.Drawing.Size(75, 23)
+		Me.start_btn.TabIndex = 3
+		Me.start_btn.Text = "Start"
+		Me.start_btn.UseVisualStyleBackColor = true
+		'
+		'load_site_btn
+		'
+		Me.load_site_btn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.load_site_btn.Location = New System.Drawing.Point(53, 80)
+		Me.load_site_btn.Name = "load_site_btn"
+		Me.load_site_btn.Size = New System.Drawing.Size(104, 23)
+		Me.load_site_btn.TabIndex = 2
+		Me.load_site_btn.Text = "Load Website"
+		Me.load_site_btn.UseVisualStyleBackColor = true
+		'
 		'url_box
 		'
 		Me.url_box.Font = New System.Drawing.Font("Microsoft Sans Serif", 12!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
@@ -84,38 +118,6 @@ Partial Class MainForm
 		Me.label1.TabIndex = 1
 		Me.label1.Text = "URL : "
 		'
-		'load_site_btn
-		'
-		Me.load_site_btn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.load_site_btn.Location = New System.Drawing.Point(53, 80)
-		Me.load_site_btn.Name = "load_site_btn"
-		Me.load_site_btn.Size = New System.Drawing.Size(104, 23)
-		Me.load_site_btn.TabIndex = 2
-		Me.load_site_btn.Text = "Load Website"
-		Me.load_site_btn.UseVisualStyleBackColor = true
-		'
-		'start_btn
-		'
-		Me.start_btn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.start_btn.ForeColor = System.Drawing.Color.Blue
-		Me.start_btn.Location = New System.Drawing.Point(275, 80)
-		Me.start_btn.Name = "start_btn"
-		Me.start_btn.Size = New System.Drawing.Size(75, 23)
-		Me.start_btn.TabIndex = 3
-		Me.start_btn.Text = "Start"
-		Me.start_btn.UseVisualStyleBackColor = true
-		'
-		'stop_btn
-		'
-		Me.stop_btn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.stop_btn.ForeColor = System.Drawing.Color.Red
-		Me.stop_btn.Location = New System.Drawing.Point(358, 80)
-		Me.stop_btn.Name = "stop_btn"
-		Me.stop_btn.Size = New System.Drawing.Size(75, 23)
-		Me.stop_btn.TabIndex = 4
-		Me.stop_btn.Text = "Stop"
-		Me.stop_btn.UseVisualStyleBackColor = true
-		'
 		'proxy_grp
 		'
 		Me.proxy_grp.Controls.Add(Me.proxy_help)
@@ -128,14 +130,6 @@ Partial Class MainForm
 		Me.proxy_grp.TabStop = false
 		Me.proxy_grp.Text = "Proxy Setup"
 		'
-		'proxy_box
-		'
-		Me.proxy_box.Location = New System.Drawing.Point(12, 32)
-		Me.proxy_box.Name = "proxy_box"
-		Me.proxy_box.Size = New System.Drawing.Size(245, 20)
-		Me.proxy_box.TabIndex = 0
-		Me.proxy_box.Text = "121.183.4.54:51325 "
-		'
 		'proxy_help
 		'
 		Me.proxy_help.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
@@ -144,6 +138,14 @@ Partial Class MainForm
 		Me.proxy_help.Size = New System.Drawing.Size(98, 23)
 		Me.proxy_help.TabIndex = 1
 		Me.proxy_help.Text = "Format - proxy:port"
+		'
+		'proxy_box
+		'
+		Me.proxy_box.Location = New System.Drawing.Point(12, 32)
+		Me.proxy_box.Name = "proxy_box"
+		Me.proxy_box.Size = New System.Drawing.Size(245, 20)
+		Me.proxy_box.TabIndex = 0
+		Me.proxy_box.Text = "121.183.4.54:51325 "
 		'
 		'hitspeed_grp
 		'
@@ -157,14 +159,6 @@ Partial Class MainForm
 		Me.hitspeed_grp.TabStop = false
 		Me.hitspeed_grp.Text = "Hit Speed"
 		'
-		'hit_speed_val_box
-		'
-		Me.hit_speed_val_box.Location = New System.Drawing.Point(9, 32)
-		Me.hit_speed_val_box.Name = "hit_speed_val_box"
-		Me.hit_speed_val_box.Size = New System.Drawing.Size(148, 20)
-		Me.hit_speed_val_box.TabIndex = 0
-		Me.hit_speed_val_box.Text = "10"
-		'
 		'hit_speed_help
 		'
 		Me.hit_speed_help.BackColor = System.Drawing.Color.Transparent
@@ -174,6 +168,14 @@ Partial Class MainForm
 		Me.hit_speed_help.Size = New System.Drawing.Size(158, 23)
 		Me.hit_speed_help.TabIndex = 2
 		Me.hit_speed_help.Text = "Fast Speed < Slow Speed (Val)"
+		'
+		'hit_speed_val_box
+		'
+		Me.hit_speed_val_box.Location = New System.Drawing.Point(9, 32)
+		Me.hit_speed_val_box.Name = "hit_speed_val_box"
+		Me.hit_speed_val_box.Size = New System.Drawing.Size(148, 20)
+		Me.hit_speed_val_box.TabIndex = 0
+		Me.hit_speed_val_box.Text = "10"
 		'
 		'web_browser_grp
 		'
@@ -217,8 +219,9 @@ Partial Class MainForm
 		Me.web_browser_grp.ResumeLayout(false)
 		Me.ResumeLayout(false)
 	End Sub
+	Private hit_timer As System.Windows.Forms.Timer
 	Private web_browser_grp As System.Windows.Forms.GroupBox
-	Private webBrowser As System.Windows.Forms.WebBrowser
+	Friend webBrowser As System.Windows.Forms.WebBrowser
 	Private hit_speed_val_box As System.Windows.Forms.TextBox
 	Private hit_speed_help As System.Windows.Forms.Label
 	Private hitspeed_grp As System.Windows.Forms.GroupBox

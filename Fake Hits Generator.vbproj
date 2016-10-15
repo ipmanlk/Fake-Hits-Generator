@@ -64,6 +64,7 @@
     <Compile Include="MainForm.vb" />
     <Compile Include="Program.vb" />
     <Compile Include="Properties\AssemblyInfo.vb" />
+    <Compile Include="Use_Proxy.vb" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\Settings.settings">
