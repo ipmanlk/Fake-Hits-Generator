@@ -11,10 +11,10 @@ Fake website hits (traffic) generator tool. Also known as the Fake Traffic Gener
 - GPL v3
 
 ##Author
-- ipman_98 (ipman_98@yahoo.com)
+- ipman_98 (ipman_98@ipman98.96.lt)
 
-##Contact
-- ipman_98 (ipman_98@yahoo.com)
+##Contact Me
+- E-Mail : contact@ipman98.96.lt
 
 ##Download
 1. You can download this project in zip or tar format.
