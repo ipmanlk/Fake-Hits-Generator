@@ -14,7 +14,7 @@ Fake website hits (traffic) generator tool. Also known as the Fake Traffic Gener
 - ipman_98 (ipman_98@ipman98.96.lt)
 
 ##Contact Me
-- E-Mail : contact@ipman98.96.lt
+- EMail : contact@ipman98.96.lt
 
 ##Download
 1. You can download this project in zip or tar format.
