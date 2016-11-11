@@ -57,8 +57,9 @@ Public Partial Class MainForm
 			webBrowser.Refresh
 			webBrowser.Navigate(url_box.Text)
 			hit_count.Text = "Hits : " & Hits.ToString 
-			Timer_Value = 0
 			Hits += 1
+			Timer_Value = 0
+			
 		End If	
 	End Sub
 	

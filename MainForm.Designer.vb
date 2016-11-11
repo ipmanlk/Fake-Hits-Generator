@@ -51,11 +51,20 @@ Partial Class MainForm
 		Me.statusStrip1 = New System.Windows.Forms.StatusStrip()
 		Me.hit_count = New System.Windows.Forms.ToolStripStatusLabel()
 		Me.hit_cntdown = New System.Windows.Forms.ToolStripStatusLabel()
+		Me.proxy_list_grp = New System.Windows.Forms.GroupBox()
+		Me.proxy_list = New System.Windows.Forms.ListBox()
+		Me.checkBox1 = New System.Windows.Forms.CheckBox()
+		Me.checkBox2 = New System.Windows.Forms.CheckBox()
+		Me.textBox1 = New System.Windows.Forms.TextBox()
+		Me.label2 = New System.Windows.Forms.Label()
+		Me.label3 = New System.Windows.Forms.Label()
+		Me.button1 = New System.Windows.Forms.Button()
 		Me.main_control_grp.SuspendLayout
 		Me.proxy_grp.SuspendLayout
 		Me.hitspeed_grp.SuspendLayout
 		Me.web_browser_grp.SuspendLayout
 		Me.statusStrip1.SuspendLayout
+		Me.proxy_list_grp.SuspendLayout
 		Me.SuspendLayout
 		'
 		'main_control_grp
@@ -68,7 +77,7 @@ Partial Class MainForm
 		Me.main_control_grp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.main_control_grp.Location = New System.Drawing.Point(12, 12)
 		Me.main_control_grp.Name = "main_control_grp"
-		Me.main_control_grp.Size = New System.Drawing.Size(445, 123)
+		Me.main_control_grp.Size = New System.Drawing.Size(382, 123)
 		Me.main_control_grp.TabIndex = 0
 		Me.main_control_grp.TabStop = false
 		Me.main_control_grp.Text = "Main Controls"
@@ -78,7 +87,7 @@ Partial Class MainForm
 		Me.stop_btn.Enabled = false
 		Me.stop_btn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.stop_btn.ForeColor = System.Drawing.Color.Red
-		Me.stop_btn.Location = New System.Drawing.Point(358, 80)
+		Me.stop_btn.Location = New System.Drawing.Point(285, 80)
 		Me.stop_btn.Name = "stop_btn"
 		Me.stop_btn.Size = New System.Drawing.Size(75, 23)
 		Me.stop_btn.TabIndex = 4
@@ -91,7 +100,7 @@ Partial Class MainForm
 		Me.start_btn.Enabled = false
 		Me.start_btn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.start_btn.ForeColor = System.Drawing.Color.Blue
-		Me.start_btn.Location = New System.Drawing.Point(275, 80)
+		Me.start_btn.Location = New System.Drawing.Point(206, 80)
 		Me.start_btn.Name = "start_btn"
 		Me.start_btn.Size = New System.Drawing.Size(75, 23)
 		Me.start_btn.TabIndex = 3
@@ -115,7 +124,7 @@ Partial Class MainForm
 		Me.url_box.Font = New System.Drawing.Font("Microsoft Sans Serif", 12!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.url_box.Location = New System.Drawing.Point(53, 36)
 		Me.url_box.Name = "url_box"
-		Me.url_box.Size = New System.Drawing.Size(380, 26)
+		Me.url_box.Size = New System.Drawing.Size(307, 26)
 		Me.url_box.TabIndex = 0
 		AddHandler Me.url_box.TextChanged, AddressOf Me.Url_boxTextChanged
 		'
@@ -135,7 +144,7 @@ Partial Class MainForm
 		Me.proxy_grp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.proxy_grp.Location = New System.Drawing.Point(12, 145)
 		Me.proxy_grp.Name = "proxy_grp"
-		Me.proxy_grp.Size = New System.Drawing.Size(269, 84)
+		Me.proxy_grp.Size = New System.Drawing.Size(215, 84)
 		Me.proxy_grp.TabIndex = 1
 		Me.proxy_grp.TabStop = false
 		Me.proxy_grp.Text = "Proxy Setup"
@@ -153,7 +162,7 @@ Partial Class MainForm
 		'
 		Me.proxy_box.Location = New System.Drawing.Point(12, 32)
 		Me.proxy_box.Name = "proxy_box"
-		Me.proxy_box.Size = New System.Drawing.Size(245, 20)
+		Me.proxy_box.Size = New System.Drawing.Size(190, 20)
 		Me.proxy_box.TabIndex = 0
 		Me.proxy_box.Text = "null"
 		'
@@ -162,9 +171,9 @@ Partial Class MainForm
 		Me.hitspeed_grp.Controls.Add(Me.hit_speed_help)
 		Me.hitspeed_grp.Controls.Add(Me.hit_speed_val_box)
 		Me.hitspeed_grp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.hitspeed_grp.Location = New System.Drawing.Point(290, 145)
+		Me.hitspeed_grp.Location = New System.Drawing.Point(233, 145)
 		Me.hitspeed_grp.Name = "hitspeed_grp"
-		Me.hitspeed_grp.Size = New System.Drawing.Size(167, 84)
+		Me.hitspeed_grp.Size = New System.Drawing.Size(161, 84)
 		Me.hitspeed_grp.TabIndex = 2
 		Me.hitspeed_grp.TabStop = false
 		Me.hitspeed_grp.Text = "Hit Speed"
@@ -173,7 +182,7 @@ Partial Class MainForm
 		'
 		Me.hit_speed_help.BackColor = System.Drawing.Color.Transparent
 		Me.hit_speed_help.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.hit_speed_help.Location = New System.Drawing.Point(6, 58)
+		Me.hit_speed_help.Location = New System.Drawing.Point(3, 57)
 		Me.hit_speed_help.Name = "hit_speed_help"
 		Me.hit_speed_help.Size = New System.Drawing.Size(158, 23)
 		Me.hit_speed_help.TabIndex = 2
@@ -181,9 +190,9 @@ Partial Class MainForm
 		'
 		'hit_speed_val_box
 		'
-		Me.hit_speed_val_box.Location = New System.Drawing.Point(9, 32)
+		Me.hit_speed_val_box.Location = New System.Drawing.Point(21, 32)
 		Me.hit_speed_val_box.Name = "hit_speed_val_box"
-		Me.hit_speed_val_box.Size = New System.Drawing.Size(148, 20)
+		Me.hit_speed_val_box.Size = New System.Drawing.Size(118, 20)
 		Me.hit_speed_val_box.TabIndex = 0
 		Me.hit_speed_val_box.Text = "10"
 		'
@@ -193,7 +202,7 @@ Partial Class MainForm
 		Me.web_browser_grp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.web_browser_grp.Location = New System.Drawing.Point(12, 237)
 		Me.web_browser_grp.Name = "web_browser_grp"
-		Me.web_browser_grp.Size = New System.Drawing.Size(445, 123)
+		Me.web_browser_grp.Size = New System.Drawing.Size(382, 123)
 		Me.web_browser_grp.TabIndex = 5
 		Me.web_browser_grp.TabStop = false
 		Me.web_browser_grp.Text = "Web Browser"
@@ -205,7 +214,7 @@ Partial Class MainForm
 		Me.webBrowser.MinimumSize = New System.Drawing.Size(20, 20)
 		Me.webBrowser.Name = "webBrowser"
 		Me.webBrowser.ScriptErrorsSuppressed = true
-		Me.webBrowser.Size = New System.Drawing.Size(439, 104)
+		Me.webBrowser.Size = New System.Drawing.Size(376, 104)
 		Me.webBrowser.TabIndex = 0
 		'
 		'hit_timer
@@ -217,7 +226,7 @@ Partial Class MainForm
 		Me.statusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.hit_count, Me.hit_cntdown})
 		Me.statusStrip1.Location = New System.Drawing.Point(0, 371)
 		Me.statusStrip1.Name = "statusStrip1"
-		Me.statusStrip1.Size = New System.Drawing.Size(469, 22)
+		Me.statusStrip1.Size = New System.Drawing.Size(581, 22)
 		Me.statusStrip1.TabIndex = 6
 		Me.statusStrip1.Text = "statusStrip1"
 		'
@@ -234,11 +243,94 @@ Partial Class MainForm
 		Me.hit_cntdown.Name = "hit_cntdown"
 		Me.hit_cntdown.Size = New System.Drawing.Size(0, 17)
 		'
+		'proxy_list_grp
+		'
+		Me.proxy_list_grp.Controls.Add(Me.button1)
+		Me.proxy_list_grp.Controls.Add(Me.label3)
+		Me.proxy_list_grp.Controls.Add(Me.textBox1)
+		Me.proxy_list_grp.Controls.Add(Me.checkBox2)
+		Me.proxy_list_grp.Controls.Add(Me.checkBox1)
+		Me.proxy_list_grp.Controls.Add(Me.proxy_list)
+		Me.proxy_list_grp.Controls.Add(Me.label2)
+		Me.proxy_list_grp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.proxy_list_grp.Location = New System.Drawing.Point(407, 12)
+		Me.proxy_list_grp.Name = "proxy_list_grp"
+		Me.proxy_list_grp.Size = New System.Drawing.Size(160, 345)
+		Me.proxy_list_grp.TabIndex = 6
+		Me.proxy_list_grp.TabStop = false
+		Me.proxy_list_grp.Text = "Proxy List"
+		'
+		'proxy_list
+		'
+		Me.proxy_list.Dock = System.Windows.Forms.DockStyle.Bottom
+		Me.proxy_list.FormattingEnabled = true
+		Me.proxy_list.Location = New System.Drawing.Point(3, 130)
+		Me.proxy_list.Name = "proxy_list"
+		Me.proxy_list.Size = New System.Drawing.Size(154, 212)
+		Me.proxy_list.TabIndex = 0
+		'
+		'checkBox1
+		'
+		Me.checkBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.checkBox1.Location = New System.Drawing.Point(6, 20)
+		Me.checkBox1.Name = "checkBox1"
+		Me.checkBox1.Size = New System.Drawing.Size(104, 24)
+		Me.checkBox1.TabIndex = 1
+		Me.checkBox1.Text = "Use Proxy List"
+		Me.checkBox1.UseVisualStyleBackColor = true
+		'
+		'checkBox2
+		'
+		Me.checkBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.checkBox2.Location = New System.Drawing.Point(6, 44)
+		Me.checkBox2.Name = "checkBox2"
+		Me.checkBox2.Size = New System.Drawing.Size(132, 24)
+		Me.checkBox2.TabIndex = 2
+		Me.checkBox2.Text = "Auto Switch Proxies"
+		Me.checkBox2.UseVisualStyleBackColor = true
+		'
+		'textBox1
+		'
+		Me.textBox1.Location = New System.Drawing.Point(77, 70)
+		Me.textBox1.Name = "textBox1"
+		Me.textBox1.Size = New System.Drawing.Size(48, 20)
+		Me.textBox1.TabIndex = 3
+		Me.textBox1.Text = "10"
+		'
+		'label2
+		'
+		Me.label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.label2.Location = New System.Drawing.Point(3, 73)
+		Me.label2.Name = "label2"
+		Me.label2.Size = New System.Drawing.Size(78, 23)
+		Me.label2.TabIndex = 4
+		Me.label2.Text = "Switch After : "
+		'
+		'label3
+		'
+		Me.label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.label3.Location = New System.Drawing.Point(127, 74)
+		Me.label3.Name = "label3"
+		Me.label3.Size = New System.Drawing.Size(30, 23)
+		Me.label3.TabIndex = 5
+		Me.label3.Text = "Hits."
+		'
+		'button1
+		'
+		Me.button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.button1.Location = New System.Drawing.Point(5, 102)
+		Me.button1.Name = "button1"
+		Me.button1.Size = New System.Drawing.Size(151, 23)
+		Me.button1.TabIndex = 5
+		Me.button1.Text = "Load Proxy List"
+		Me.button1.UseVisualStyleBackColor = true
+		'
 		'MainForm
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-		Me.ClientSize = New System.Drawing.Size(469, 393)
+		Me.ClientSize = New System.Drawing.Size(581, 393)
+		Me.Controls.Add(Me.proxy_list_grp)
 		Me.Controls.Add(Me.statusStrip1)
 		Me.Controls.Add(Me.web_browser_grp)
 		Me.Controls.Add(Me.hitspeed_grp)
@@ -257,9 +349,19 @@ Partial Class MainForm
 		Me.web_browser_grp.ResumeLayout(false)
 		Me.statusStrip1.ResumeLayout(false)
 		Me.statusStrip1.PerformLayout
+		Me.proxy_list_grp.ResumeLayout(false)
+		Me.proxy_list_grp.PerformLayout
 		Me.ResumeLayout(false)
 		Me.PerformLayout
 	End Sub
+	Private label2 As System.Windows.Forms.Label
+	Private checkBox1 As System.Windows.Forms.CheckBox
+	Private checkBox2 As System.Windows.Forms.CheckBox
+	Private textBox1 As System.Windows.Forms.TextBox
+	Private label3 As System.Windows.Forms.Label
+	Private button1 As System.Windows.Forms.Button
+	Private proxy_list As System.Windows.Forms.ListBox
+	Private proxy_list_grp As System.Windows.Forms.GroupBox
 	Private hit_cntdown As System.Windows.Forms.ToolStripStatusLabel
 	Private hit_count As System.Windows.Forms.ToolStripStatusLabel
 	Private statusStrip1 As System.Windows.Forms.StatusStrip
