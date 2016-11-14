@@ -56,6 +56,7 @@ Partial Class MainForm
 		Me.ProxyListUse = New System.Windows.Forms.CheckBox()
 		Me.proxy_list = New System.Windows.Forms.ListBox()
 		Me.label2 = New System.Windows.Forms.Label()
+		Me.logBox = New System.Windows.Forms.ListBox()
 		Me.main_control_grp.SuspendLayout
 		Me.hitspeed_grp.SuspendLayout
 		Me.web_browser_grp.SuspendLayout
@@ -183,6 +184,7 @@ Partial Class MainForm
 		Me.webBrowser.ScriptErrorsSuppressed = true
 		Me.webBrowser.Size = New System.Drawing.Size(376, 104)
 		Me.webBrowser.TabIndex = 0
+		AddHandler Me.webBrowser.DocumentCompleted, AddressOf Me.WebBrowserDocumentCompleted
 		'
 		'hit_timer
 		'
@@ -191,7 +193,7 @@ Partial Class MainForm
 		'statusStrip1
 		'
 		Me.statusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.hit_count, Me.hit_cntdown})
-		Me.statusStrip1.Location = New System.Drawing.Point(0, 371)
+		Me.statusStrip1.Location = New System.Drawing.Point(0, 455)
 		Me.statusStrip1.Name = "statusStrip1"
 		Me.statusStrip1.Size = New System.Drawing.Size(581, 22)
 		Me.statusStrip1.TabIndex = 6
@@ -222,7 +224,7 @@ Partial Class MainForm
 		Me.proxy_list_grp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.proxy_list_grp.Location = New System.Drawing.Point(407, 12)
 		Me.proxy_list_grp.Name = "proxy_list_grp"
-		Me.proxy_list_grp.Size = New System.Drawing.Size(160, 345)
+		Me.proxy_list_grp.Size = New System.Drawing.Size(160, 348)
 		Me.proxy_list_grp.TabIndex = 6
 		Me.proxy_list_grp.TabStop = false
 		Me.proxy_list_grp.Text = "Proxy List"
@@ -265,6 +267,7 @@ Partial Class MainForm
 		Me.autoSwitch.TabIndex = 2
 		Me.autoSwitch.Text = "Auto Switch Proxies"
 		Me.autoSwitch.UseVisualStyleBackColor = true
+		AddHandler Me.autoSwitch.CheckedChanged, AddressOf Me.AutoSwitchCheckedChanged
 		'
 		'ProxyListUse
 		'
@@ -275,12 +278,13 @@ Partial Class MainForm
 		Me.ProxyListUse.TabIndex = 1
 		Me.ProxyListUse.Text = "Use Proxy List"
 		Me.ProxyListUse.UseVisualStyleBackColor = true
+		AddHandler Me.ProxyListUse.CheckedChanged, AddressOf Me.ProxyListUseCheckedChanged
 		'
 		'proxy_list
 		'
 		Me.proxy_list.Dock = System.Windows.Forms.DockStyle.Bottom
 		Me.proxy_list.FormattingEnabled = true
-		Me.proxy_list.Location = New System.Drawing.Point(3, 130)
+		Me.proxy_list.Location = New System.Drawing.Point(3, 133)
 		Me.proxy_list.Name = "proxy_list"
 		Me.proxy_list.Size = New System.Drawing.Size(154, 212)
 		Me.proxy_list.TabIndex = 0
@@ -295,11 +299,21 @@ Partial Class MainForm
 		Me.label2.TabIndex = 4
 		Me.label2.Text = "Switch After : "
 		'
+		'logBox
+		'
+		Me.logBox.Dock = System.Windows.Forms.DockStyle.Bottom
+		Me.logBox.FormattingEnabled = true
+		Me.logBox.Location = New System.Drawing.Point(0, 373)
+		Me.logBox.Name = "logBox"
+		Me.logBox.Size = New System.Drawing.Size(581, 82)
+		Me.logBox.TabIndex = 7
+		'
 		'MainForm
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-		Me.ClientSize = New System.Drawing.Size(581, 393)
+		Me.ClientSize = New System.Drawing.Size(581, 477)
+		Me.Controls.Add(Me.logBox)
 		Me.Controls.Add(Me.proxy_list_grp)
 		Me.Controls.Add(Me.statusStrip1)
 		Me.Controls.Add(Me.web_browser_grp)
@@ -321,6 +335,7 @@ Partial Class MainForm
 		Me.ResumeLayout(false)
 		Me.PerformLayout
 	End Sub
+	Private logBox As System.Windows.Forms.ListBox
 	Private label2 As System.Windows.Forms.Label
 	Private ProxyListUse As System.Windows.Forms.CheckBox
 	Private autoSwitch As System.Windows.Forms.CheckBox
