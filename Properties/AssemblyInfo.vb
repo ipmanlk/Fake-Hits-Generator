@@ -29,4 +29,4 @@ Imports System.Runtime.InteropServices
 ' numbers with the '*' character (the default):
 
 '<assembly: AssemblyVersion("1.0.*")>
- <assembly: AssemblyVersion("0.4")>
+ <assembly: AssemblyVersion("0.4.1")>

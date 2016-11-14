@@ -70,22 +70,25 @@ Public Partial Class MainForm
 		Timer_Value += 1
 		
 		hit_cntdown.Text = "Waiting : " & Timer_Value.ToString
-		
-		Timer_Value = Speed
-		webBrowser.Refresh
-		
-		If ProxyListUse.Checked = True Then 
-			Call UseProxyList()
+				
+		If Timer_Value = Speed Then 
 			
-		Else If ProxyListUse.Checked = False Then 
-			NavigateWithoutProxy()
+			webBrowser.Refresh
+			
+			If ProxyListUse.Checked = True Then 
+				
+				Call UseProxyList()
+			
+			Else If ProxyListUse.Checked = False Then 
+				NavigateWithoutProxy()
+				
+			End If 
+		
+			hit_count.Text = "Hits : " & Hits.ToString
+			Hits += 1
+			Timer_Value = 0	
 			
 		End If 
-		
-		hit_count.Text = "Hits : " & Hits.ToString
-		Hits += 1
-		Timer_Value = 0	
-
 	End Sub
 	
 	Sub Stop_btnClick(sender As Object, e As EventArgs)
