@@ -25,20 +25,22 @@ Public Partial Class MainForm
 		url_box.Text = url_box.Text.Trim
 		hit_speed_val_box.Text = hit_speed_val_box.Text.Trim 
 		start_btn.Enabled = True
-		If String.IsNullOrEmpty(url_box.Text) Or String.IsNullOrEmpty(hit_speed_val_box.Text) Then 
-			MsgBox("Input details are missing!",vbExclamation,"Error")
-			
+		
+		'Check inputs are null or empty
+		If String.IsNullOrEmpty(url_box.Text) Or String.IsNullOrEmpty(hit_speed_val_box.Text) Then
+			MsgBox("Input details are missing!",vbExclamation,"Error")	
 		Else
 			
-			If ProxyListUse.Checked = True Then 
+			If ProxyListUse.Checked = True Then 'Check if proxy is selected
 				LogAdd("Proxy Selected : " & proxy_list.SelectedItem)
 				Call NavigateWithProxy()
+				
 			Else If ProxyListUse.Checked = False Then
 				Call NavigateWithoutProxy()
 				LogAdd("Proxy Disabled.")
 			End If	
 		
-			load_site_btn.Enabled = False	
+			load_site_btn.Enabled = False	'Disable buttons to start process
 			proxy_list_grp.Enabled = False 
 		End If
 		
@@ -47,40 +49,42 @@ Public Partial Class MainForm
 	End Sub
 	
 	Sub Start_btnClick(sender As Object, e As EventArgs)
-		hit_timer.Enabled = True
-		Speed = hit_speed_val_box.Text
-		Hits = 1
+		
+		hit_timer.Enabled = True	'Starting the timer
+		Speed = hit_speed_val_box.Text 'Setting the Hitting Speed
+		Hits = 1	'Reset Hits
+		
 		start_btn.Enabled = False 
 		stop_btn.Enabled = True 
-		SwitchHits = switch_hits_txt.Text
+		
+		SwitchHits = switch_hits_txt.Text 'Set Proxy switch value
+		
 		proxy_list_grp.Enabled = True
+		
 		LogAdd("Process started. Hit Speed is " & hit_speed_val_box.Text)
+		
 	End Sub
 	
 	Sub Hit_timerTick(sender As Object, e As EventArgs)		
+		
 		Timer_Value += 1
+		
 		hit_cntdown.Text = "Waiting : " & Timer_Value.ToString
 		
+		Timer_Value = Speed
+		webBrowser.Refresh
 		
 		If ProxyListUse.Checked = True Then 
-			
-			If Timer_Value = Speed Then
-				webBrowser.Refresh
-				Call UseProxyList()
-				hit_count.Text = "Hits : " & Hits.ToString 
-				Hits += 1
-				Timer_Value = 0	
-			End If 
+			Call UseProxyList()
 			
 		Else If ProxyListUse.Checked = False Then 
-			If Timer_Value = Speed Then 			
-				webBrowser.Refresh
-				webBrowser.Navigate(url_box.Text)
-				hit_count.Text = "Hits : " & Hits.ToString 
-				Hits += 1
-				Timer_Value = 0	
-			End If	
-		End If
+			NavigateWithoutProxy()
+			
+		End If 
+		
+		hit_count.Text = "Hits : " & Hits.ToString
+		Hits += 1
+		Timer_Value = 0	
 
 	End Sub
 	
@@ -90,7 +94,7 @@ Public Partial Class MainForm
 		load_site_btn.Enabled = True
 		hit_cntdown.Text = "Waiting : Stopped"
 		SwitchHits = 0
-
+		LogAdd("Process stopped!. " & "Total Hits : " & Hits)
 	End Sub
 	
 	Sub Url_boxTextChanged(sender As Object, e As EventArgs)
@@ -104,7 +108,6 @@ Public Partial Class MainForm
 	End Sub
 	
 	Private Sub UseProxyList()
-		
 		
 		If autoSwitch.Checked = True Then
 			Call NavigateWithProxy()
@@ -123,7 +126,6 @@ Public Partial Class MainForm
 
 		End If
 		
-		
 	End Sub
 	
 	Private Sub NavigateWithProxy()
@@ -135,7 +137,8 @@ Public Partial Class MainForm
 		webBrowser.Navigate(url_box.Text)
 	End Sub
 	
-	Private Sub OpenProxyList()
+	Private Sub OpenProxyList() 'Load proxy list from a text file
+		
     	Dim openfile = New OpenFileDialog()
     	openfile.Filter = "Text (*.txt)|*.txt"
     	If (openfile.ShowDialog() = System.Windows.Forms.DialogResult.OK) Then
@@ -147,7 +150,8 @@ Public Partial Class MainForm
         	Next
         	proxy_list.SelectedIndex = 0
         	LogAdd("Proxy list added with " & proxy_list.Items.Count & " proxies.")
-    End If
+    	End If
+    	
 	End Sub
 	
 	Sub Switch_hits_txtTextChanged(sender As Object, e As EventArgs)
@@ -155,15 +159,11 @@ Public Partial Class MainForm
 	End Sub	
 	
 	Sub Proxy_listSelectedIndexChanged(sender As Object, e As EventArgs)
-		Proxy = proxy_list.SelectedItem
+		Proxy = proxy_list.SelectedItem 'Changing proxy
 		LogAdd("Proxy selected : " & Proxy)
 	End Sub
 	
-	Sub WebBrowserDocumentCompleted(sender As Object, e As WebBrowserDocumentCompletedEventArgs)
-	
-	End Sub
-	
-	Sub LogAdd(log As String)
+	Sub LogAdd(log As String) 'Log box update
 		logBox.Items.Add(log)
 	End Sub
 	
@@ -178,4 +178,5 @@ Public Partial Class MainForm
 	Sub AutoSwitchCheckedChanged(sender As Object, e As EventArgs)
 		LogAdd("Proxy auto switch is enabled.")
 	End Sub
+	
 End Class

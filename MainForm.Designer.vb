@@ -184,7 +184,7 @@ Partial Class MainForm
 		Me.webBrowser.ScriptErrorsSuppressed = true
 		Me.webBrowser.Size = New System.Drawing.Size(376, 104)
 		Me.webBrowser.TabIndex = 0
-		AddHandler Me.webBrowser.DocumentCompleted, AddressOf Me.WebBrowserDocumentCompleted
+
 		'
 		'hit_timer
 		'
@@ -319,6 +319,7 @@ Partial Class MainForm
 		Me.Controls.Add(Me.web_browser_grp)
 		Me.Controls.Add(Me.hitspeed_grp)
 		Me.Controls.Add(Me.main_control_grp)
+		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
 		Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
 		Me.Name = "MainForm"
 		Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
