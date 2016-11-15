@@ -20,6 +20,7 @@ Fake website hits (traffic) generator tool. Also known as the Fake Traffic Gener
 
 ##Website
 - https://www.navinda.space
+- Project : https://www.navinda.space/creations/fake-hits-generator/
 
 ##Contact Me
 - EMail : contact@ipman98.96.lt
