@@ -9,7 +9,6 @@ Fake website hits (traffic) generator tool. Also known as the Fake Traffic Gener
 
 ##Information
 - Latest stable source code is avaiable in the master branch. 
-- Untested versions & new features are available in "future" branches.
 - Proxy list is available in proxy_list branch.
 
 ##License
