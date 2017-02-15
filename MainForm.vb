@@ -75,15 +75,8 @@ Public Partial Class MainForm
 			
 			webBrowser.Refresh
 			
-			If ProxyListUse.Checked = True Then 
+			If ProxyListUse.Checked = True Then Call UseProxyList() Else NavigateWithoutProxy()
 				
-				Call UseProxyList()
-			
-			Else If ProxyListUse.Checked = False Then 
-				NavigateWithoutProxy()
-				
-			End If 
-		
 			hit_count.Text = "Hits : " & Hits.ToString
 			Hits += 1
 			Timer_Value = 0	
@@ -117,15 +110,16 @@ Public Partial Class MainForm
 			
 			If switch_hits_txt.Text = Hits Then 
 				
-				If proxy_list.SelectedIndex = proxy_list.Items.Count - 1 Then
-					proxy_list.SelectedIndex = -1
-				End If 
-				
+				If proxy_list.SelectedIndex = proxy_list.Items.Count - 1 Then proxy_list.SelectedIndex = -1 
+
 				switch_hits_txt.Text += SwitchHits
 				webBrowser.Stop
 				proxy_list.SelectedIndex += 1
 
-		  	End If
+			End If
+			
+		Else 
+			Call NavigateWithProxy()
 
 		End If
 		
@@ -171,15 +165,11 @@ Public Partial Class MainForm
 	End Sub
 	
 	Sub ProxyListUseCheckedChanged(sender As Object, e As EventArgs)
-		If ProxyListUse.Checked = True Then
-			LogAdd("Proxy list is enabled.")
-		Else 
-			LogAdd("Proxy list is disabled.")
-		End If
+		If ProxyListUse.Checked = True Then LogAdd("Proxy list is enabled.") Else LogAdd("Proxy list is disabled.")
 	End Sub
 	
-	Sub AutoSwitchCheckedChanged(sender As Object, e As EventArgs)
-		LogAdd("Proxy auto switch is enabled.")
+	Sub AutoSwitchCheckedChanged(sender As Object, e As EventArgs)	
+		If autoSwitch.Checked = True Then LogAdd("Proxy auto switch is enabled.") Else LogAdd("Proxy auto switch is disabled.") 	
 	End Sub
 	
 End Class
