@@ -39,7 +39,7 @@ Public Partial Class MainForm
 				Call NavigateWithoutProxy()
 				LogAdd("Proxy Disabled.")
 			End If	
-		
+			
 			load_site_btn.Enabled = False	'Disable buttons to start process
 			proxy_list_grp.Enabled = False 
 		End If
@@ -70,17 +70,15 @@ Public Partial Class MainForm
 		Timer_Value += 1
 		
 		hit_cntdown.Text = "Waiting : " & Timer_Value.ToString
-				
+		
 		If Timer_Value = Speed Then 
 			
 			webBrowser.Refresh
 			
-			If ProxyListUse.Checked = True Then Call UseProxyList() Else NavigateWithoutProxy()
-				
+		If ProxyListUse.Checked = True Then Call UseProxyList() Else NavigateWithoutProxy()		
 			hit_count.Text = "Hits : " & Hits.ToString
-			Hits += 1
 			Timer_Value = 0	
-			
+			Hits += 1	
 		End If 
 	End Sub
 	
@@ -111,16 +109,16 @@ Public Partial Class MainForm
 			If switch_hits_txt.Text = Hits Then 
 				
 				If proxy_list.SelectedIndex = proxy_list.Items.Count - 1 Then proxy_list.SelectedIndex = -1 
-
+				
 				switch_hits_txt.Text += SwitchHits
 				webBrowser.Stop
 				proxy_list.SelectedIndex += 1
-
+				
 			End If
 			
 		Else 
 			Call NavigateWithProxy()
-
+			
 		End If
 		
 	End Sub
@@ -136,19 +134,19 @@ Public Partial Class MainForm
 	
 	Private Sub OpenProxyList() 'Load proxy list from a text file
 		
-    	Dim openfile = New OpenFileDialog()
-    	openfile.Filter = "Text (*.txt)|*.txt"
-    	If (openfile.ShowDialog() = System.Windows.Forms.DialogResult.OK) Then
-        	Dim proxyfile As String = openfile.FileName
-        	Dim proxies As String() = File.ReadAllLines(proxyfile)
-        	
-        	For Each line As String In proxies
-            	proxy_list.Items.Add(line)
-        	Next
-        	proxy_list.SelectedIndex = 0
-        	LogAdd("Proxy list added with " & proxy_list.Items.Count & " proxies.")
-    	End If
-    	
+		Dim openfile = New OpenFileDialog()
+		openfile.Filter = "Text (*.txt)|*.txt"
+		If (openfile.ShowDialog() = System.Windows.Forms.DialogResult.OK) Then
+			Dim proxyfile As String = openfile.FileName
+			Dim proxies As String() = File.ReadAllLines(proxyfile)
+			
+			For Each line As String In proxies
+				proxy_list.Items.Add(line)
+			Next
+			proxy_list.SelectedIndex = 0
+			LogAdd("Proxy list added with " & proxy_list.Items.Count & " proxies.")
+		End If
+		
 	End Sub
 	
 	Sub Switch_hits_txtTextChanged(sender As Object, e As EventArgs)
@@ -165,11 +163,11 @@ Public Partial Class MainForm
 	End Sub
 	
 	Sub ProxyListUseCheckedChanged(sender As Object, e As EventArgs)
-		If ProxyListUse.Checked = True Then LogAdd("Proxy list is enabled.") Else LogAdd("Proxy list is disabled.")
+	If ProxyListUse.Checked = True Then LogAdd("Proxy list is enabled.") Else LogAdd("Proxy list is disabled.")
 	End Sub
 	
 	Sub AutoSwitchCheckedChanged(sender As Object, e As EventArgs)	
-		If autoSwitch.Checked = True Then LogAdd("Proxy auto switch is enabled.") Else LogAdd("Proxy auto switch is disabled.") 	
+	If autoSwitch.Checked = True Then LogAdd("Proxy auto switch is enabled.") Else LogAdd("Proxy auto switch is disabled.") 	
 	End Sub
 	
 End Class
