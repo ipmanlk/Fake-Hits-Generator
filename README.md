@@ -1,3 +1,10 @@
+## Sorry!. I'm shutting down this project due to following reasons.
+- The IDE this project was originally developed with is no longer maintained.
+- Codebase is highly outdated and doesn't work well on newer Windows versions.
+- There are new bugs that can't be fixed due to these limitations.
+- I don't have time to build this from scratch & I no longer work with Visual Basic programming language. 
+- I'm planning to redo this entire project using Java in the future.
+
 # Fake-Hits-Generator
 Fake website hits (traffic) generator tool. Also known as the Fake Traffic Generator (Website Clicker).
 
